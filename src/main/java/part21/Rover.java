@@ -23,6 +23,8 @@ public class Rover {
     // declares the attribute eyes of type Ultrasonic that can only be accessed within the class
     private Ultrasonic eyes;
     // the constructor for the Rover class that takes 1 parameter: String name
+    private LineSensor floor;
+
     public Rover(String name){
         // assigns the name passed into the constructor to this Rover's name attribute
         this.name = name;
@@ -30,6 +32,7 @@ public class Rover {
         this.base = new Chassis();
         //  creates a new Ultrasonic object, connects it to the Rover's chassis, and assigns it to the eyes attribute
         this.eyes = new Ultrasonic(base);
+        this.floor = new LineSensor(base);
     }
     // defines a public method called somethingAhead that takes a distance in centimeters and returns a boolean
     public boolean somethingAhead(double cm){
@@ -43,6 +46,16 @@ public class Rover {
             // tells the chassis to drive straight forward 5 centimeters
             base.straight(5);
         }
+    }
+
+    public void driveToTape(){
+        while (!floor.seesTape()){
+            base.straight(2);
+        }
+    }
+
+    public void forward(double cm){
+        base.straight(cm);
     }
     // overrides the built-in toString method to return a description of the Rover
     public String toString(){
