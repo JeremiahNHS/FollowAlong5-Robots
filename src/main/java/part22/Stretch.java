@@ -11,5 +11,33 @@ import mbot.*;
 
 @MBotLab(world = "line-track")
 public class Stretch {
+    public static void main(String[] args){
+        /* MY GUESS:
+        6: straight (middle left + middle right)
+        12: turn left (far left + left)
+        3: turn right (far right + right)
+        0: lost it (none)
+
+         */
+        int[] readings = {6, 12, 3, 0};
+        for (int s : readings) {
+            if (s == 4 || s == 8 || s == 12) {
+                System.out.println(s + ": turn left");
+            } else if (s == 1 || s == 2 || s == 3) {
+                System.out.println(s + ": turn right");
+            } else if (s == 0) {
+                System.out.println(s + ": lost it");
+            } else {
+                System.out.println(s + ": straight");
+            }
+        }
+
+        //B2
+        Lapper lapper = new Lapper(new Rover("Loop"));
+        lapper.laps(2);
+
+        //B3
+        // Lapper takes the Rover as a parameter, instead of making its own because it allows for more flexibility, this way any Rover can complete laps and have them tracked w/o having to change the code
+    }
 
 }
