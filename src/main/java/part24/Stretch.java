@@ -11,5 +11,27 @@ import mbot.*;
 
 @MBotLab(world = "open-room")
 public class Stretch {
+    public static void main(String[] args){
+        /* MY GUESS:
+        Flash! Turning left 90.0
+        true
+
+        c.turnLeft(90) runs FlashyBot's turnLeft
+        a.straight(10) runs chassis straight
+         */
+        MBot2 a = new FlashyBot();
+        Chassis c = a;
+        a.straight(10);
+        c.turnLeft(90);
+        System.out.println(a == c);
+
+        System.out.println(a);
+
+        /*B4: Pick 3 prints:
+         Mission start: MBot2
+         Mission done: MBot2
+         because pick 3  is a regular MBot2 and uses its own toString method
+         */
+    }
 
 }

@@ -10,6 +10,7 @@ import mbot.*;
 // SECTION B — COMMENTS: put a // comment ABOVE every line of code, in YOUR OWN WORDS.
 // defines the FlashyBot class, which extends MBot2 and inherits its methods and attributes
 public class FlashyBot extends MBot2 {
+    private int turns;
     // a public constructor for the FlashyBot class
     public FlashyBot(){
         // calls the MBot2's constructor to initialize the inherited part of the FlashyBot
@@ -27,6 +28,7 @@ public class FlashyBot extends MBot2 {
         super.turnLeft(degrees);
         // turns off the first LED
         turnLedOff(1);
+        turns++;
     }
     // tells Java that the method below is intended to override a method from the parent class
     @Override
@@ -40,6 +42,7 @@ public class FlashyBot extends MBot2 {
         super.turnRight(degrees);
         // turns off the first LED
         turnLedOff(1);
+        turns++;
     }
     // tells Java that the method below is intended to override a method from the parent class
     @Override
@@ -52,5 +55,10 @@ public class FlashyBot extends MBot2 {
             // calls the FlashyBot's turnLeft method to turn left by 90 degrees
             turnLeft(90);
         }
+    }
+
+    @Override
+    public String toString(){
+        return "FlashyBot (" + turns + " turns)";
     }
 }

@@ -14,6 +14,7 @@ import mbot.*;
 //    saying in YOUR OWN WORDS what that line does.
 // defines the name of the class, CarefulBot, which is a type of MBot2 so it inherits driving and sensors from it
 public class CarefulBot extends MBot2 {
+    private int refused;
     // public constructor for the CarefulBot class
     public CarefulBot() {
         // calls the MBot2 constructor to initialize the inherited parts of the CarefulBot
@@ -33,6 +34,7 @@ public class CarefulBot extends MBot2 {
             turnLedOn(1,255,0,0);
             // prints out the text indicating that the measured distance is too close and CarefulBot will not drive
             System.out.println("CarefulBot: not driving " + cm + " cm, too close");
+            refused++;
         }
     }
     // tells Java that the method below is intended to override a method from the parent class
@@ -44,5 +46,10 @@ public class CarefulBot extends MBot2 {
             // calls CarefulBot's overridden straight method to attempt to move forward 40 cm
             straight(40);
         }
+    }
+
+    @Override
+    public String toString(){
+        return "CarefulBot (refused " + refused + " moves)";
     }
 }
